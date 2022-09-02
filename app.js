@@ -16,12 +16,11 @@ const main = async () => {
   let opt = '';
   const tareas = new Tareas();
 
-  const taeasDB = leerDB();
+  const tareasDB = leerDB();
 
-  if(taeasDB) {
-    
+  if(tareasDB) {
+    tareas.cargarTareasFromArray(tareasDB);
   }
-  await pausa();
 
    do {
     // Imprimir el menu
@@ -35,11 +34,12 @@ const main = async () => {
         // console.log(desc);
       break;
       case '2':
-        console.log( tareas.listadoArr );
+        tareas.listadoCompleto();
+        // console.log( tareas.listadoArr );
       break;
     };
 
-    // guardarDB(tareas.listadoArr);
+    guardarDB(tareas.listadoArr);
     await pausa();
     
    } while ( opt !== '0');
