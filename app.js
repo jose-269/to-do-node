@@ -3,6 +3,7 @@ const {
   inquirerMenu, 
   pausa, 
   leerInput ,
+  listadoTareasBorrar
 } = require('./helpers/inquirer');
 
 const Tareas = require('./models/tareas');
@@ -35,7 +36,18 @@ const main = async () => {
       break;
       case '2':
         tareas.listadoCompleto();
-        // console.log( tareas.listadoArr );
+      break;
+      case '3':
+        tareas.listarPendientesCompletadas(true);
+      break;
+      case '4':
+        tareas.listarPendientesCompletadas(false);
+      break;
+
+      case '6': //borrar
+        const id = await listadoTareasBorrar( tareas.listadoArr );
+        //TODO preguntar si está seguro
+        console.log({ id });
       break;
     };
 
